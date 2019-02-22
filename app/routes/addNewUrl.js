@@ -9,7 +9,11 @@ module.exports = class AddNewUrl {
       return res.json({error: 'invalid URL'});
     }
     
-    console.log(this._url);
+    this._url.create({url: req.body.url}, (err, small) => {
+      if (err) return handleError(err);
+      // saved!
+    });
+    
     res.json({awesome: true});
   }
   
