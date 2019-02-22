@@ -34,9 +34,14 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+
+// my test endpoint
+const handler = new AddNewUrl(new Url(mongoose));
+app.get('/api/s', handler.invoke.bind(handler));
+
 app.post('/api/shorturl/new', function (req, res) {
   
-  var Person = new Url(mongoose);
+  
   
   res.json({hi: 'j'});
 });
