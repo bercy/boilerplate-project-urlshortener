@@ -41,14 +41,7 @@ let handler = new AddNewUrl(
   new Url(mongoose),
   validator
 );
-app.get('/api/s', handler.invoke.bind(handler));
-
-app.post('/api/shorturl/new', function (req, res) {
-  
-  
-  
-  res.json({hi: 'j'});
-});
+app.post('/api/shorturl/new', handler.invoke.bind(handler));
 
 
 app.listen(port, function () {
