@@ -37,7 +37,7 @@ app.post('/api/shorturl/new', (req, res) => {
     
   Url.create({url: req.body.url}, (err, data) => {
     if (err) {
-      res.json({error: "can't write db"});
+      return res.json({error: "can't write db"});
     }
     
     res.json({original_url: data.url, short_url: data.id});
@@ -46,7 +46,13 @@ app.post('/api/shorturl/new', (req, res) => {
 
 
 app.get('/api/shorturl/:id', (req, res) => {
-  
+  Url.findById(req.params.id, (err, data) => {
+    if (err) {
+      return res.json({error: "did not find url with this id"});
+    }
+
+    res.redirect(data.url);
+  });
 });
 
 
