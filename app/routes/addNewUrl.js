@@ -5,7 +5,7 @@ module.exports = class AddNewUrl {
   }
   
   invoke (req, res) {
-    if (this.valid(req.body.url)) {
+    if (!this.valid(req.body.url)) {
       return res.json({error: 'invalid URL'});
     }
     
@@ -16,5 +16,4 @@ module.exports = class AddNewUrl {
   valid (url) {
     return this._validator.isURL(url);  
   }
-
 }
