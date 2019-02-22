@@ -5,6 +5,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var AddNewUrl = require('./app/routes/addNewUrl');
+var url = require('./app/models/url');
 
 var cors = require('cors');
 
@@ -35,8 +36,12 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.post('/api/shorturl/new', function (req, res) {
-  const url = new AddNewUrl('beee');
-  res.json({hi: url.sayHi()});
+  
+  var Person = new url(mongoose);
+  
+  console.log(Person);
+
+  res.json({hi: 'j'});
 });
 
 

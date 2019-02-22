@@ -1,8 +1,8 @@
 module.exports = class Url {
-  constructor (Schema) {
-    this._Schema = Schema;   
+  constructor (mongoose) {
+    this._Schema = mongoose.Schema;   
     
-    var personSchema = new Schema({
+    var personSchema = new this._Schema({
       name: {
         type: String,
         required: [true, 'Why no name?']
@@ -12,11 +12,6 @@ module.exports = class Url {
     });
 
 
-  var Person = mongoose.model('Person', personSchema);
+    return mongoose.model('Person', personSchema);
   }
-  
-
-
-
-
 }
