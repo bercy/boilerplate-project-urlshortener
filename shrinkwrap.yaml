@@ -4,6 +4,7 @@ dependencies:
   express: 5.0.0-alpha.7
   mongodb: 3.1.13
   mongoose: 5.4.14
+  validator: 10.11.0
 packages:
   /accepts/1.3.5:
     dependencies:
@@ -541,6 +542,12 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  /validator/10.11.0:
+    dev: false
+    engines:
+      node: '>= 0.10'
+    resolution:
+      integrity: sha512-X/p3UZerAIsbBfN/IwahhYaBbY68EN/UQBWHtsbXGT5bfrH/p4NQzUCG1kF/rtKaNpnJ7jAu6NGTdSNtyNIXMw==
   /vary/1.1.2:
     dev: false
     engines:
@@ -556,3 +563,4 @@ specifiers:
   express: ^5.0.0-alpha.2
   mongodb: ^3.1.11
   mongoose: ^5.4.13
+  validator: ^10.10.0

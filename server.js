@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var AddNewUrl = require('./app/routes/addNewUrl');
 var Url = require('./app/models/url');
+var validator = require('validator');
 
 var cors = require('cors');
 
@@ -36,7 +37,10 @@ app.get("/api/hello", function (req, res) {
 
 
 // my test endpoint
-const handler = new AddNewUrl(new Url(mongoose));
+let handler = new AddNewUrl(
+  new Url(mongoose),
+  validator
+);
 app.get('/api/s', handler.invoke.bind(handler));
 
 app.post('/api/shorturl/new', function (req, res) {
