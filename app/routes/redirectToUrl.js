@@ -8,7 +8,8 @@ module.exports = class RedirectToUrl {
       if (err) {
         res.json({error: "did not find url with this id"});
       }
-      res.json({original_url: data.url, short_url: data.id});
+      
+      res.redirect(data.url);
     });
   }
 }
