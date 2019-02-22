@@ -1,6 +1,6 @@
 module.exports = class AddNewUrl {
-  constructor (db) {
-    this._db = db;    
+  constructor (url) {
+    this._url = url;    
   }
 
 }
