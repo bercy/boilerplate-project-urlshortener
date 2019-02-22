@@ -4,8 +4,7 @@ var express = require('express');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-//var anu = require('.app/addNewUrl.js').AddNewUrl;
-import 
+var AddNewUrl = require('./app/addNewUrl');
 
 var cors = require('cors');
 
@@ -36,7 +35,8 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.post('/api/shorturl/new', function (req, res) {
-  res.json(req.body);
+  const url = new AddNewUrl('beee');
+  res.json({hi: url.sayHi()});
 });
 
 

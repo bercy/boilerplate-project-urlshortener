@@ -1,9 +1,9 @@
-export default class AddNewUrl {
-  construct (name) {
+module.exports = class AddNewUrl {
+  constructor (name) {
     this._name = name;    
   }
   
   sayHi () {
-    console.log(this._name);
+    return this._name;
   }
 }
