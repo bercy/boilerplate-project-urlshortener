@@ -9,12 +9,12 @@ module.exports = class AddNewUrl {
       return res.json({error: 'invalid URL'});
     }
     
-    this._url.create({url: req.body.url}, (err, small) => {
-      if (err) return handleError(err);
-      // saved!
+    this._url.create({url: req.body.url}, (err, data) => {
+      if (err) {
+        res.json({error: "can't write db"});
+      }
+      res.json({original_url: data.url, short_url: data.id});
     });
-    
-    res.json({awesome: true});
   }
   
   valid (url) {

@@ -5,6 +5,7 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var AddNewUrl = require('./app/routes/addNewUrl');
+var RedirectToUrl = require('./app/routes/redirectToUrl');
 var Url = require('./app/models/url');
 var validator = require('validator');
 
@@ -35,13 +36,15 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-
-// my test endpoint
-let handler = new AddNewUrl(
-  new Url(mongoose),
-  validator
-);
+let handler;
+const urlModel = new Url(mongoose);
+// create url
+handler = new AddNewUrl(urlModel, validator);
 app.post('/api/shorturl/new', handler.invoke.bind(handler));
+
+// redirect to url
+handler = new RedirectToUrl(urlModel);
+app.get('/api/shorturl/:id', handler.invoke.bind(handler));
 
 
 app.listen(port, function () {
